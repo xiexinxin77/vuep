@@ -4,6 +4,7 @@ import customerLogin from '../components/customerLogin.vue'
 import home from '../components/home.vue'
 import welcome from '../components/welcome.vue'
 import user from '../components/user.vue'
+import test from '../components/test.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -23,21 +24,24 @@ const routes = [{
     path: '/users',
     component: user
   }]
+}, {
+  path: '/test',
+  component: test
 }]
 
 const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.path === '/login') {
-    return next()
-  }
-  const tokenStr = window.sessionStorage.getItem('token')
-  if (!tokenStr) {
-    return next('/login')
-  }
-  return next()
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/login') {
+//     return next()
+//   }
+//   const tokenStr = window.sessionStorage.getItem('token')
+//   if (!tokenStr) {
+//     return next('/login')
+//   }
+//   return next()
+// })
 
 export default router
